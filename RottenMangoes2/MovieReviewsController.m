@@ -14,7 +14,7 @@
 #import "MapViewController.h"
 
 
-@interface MovieReviewsController ()<mapViewControllerDelegate>
+@interface MovieReviewsController ()<MapViewControllerDelegate>
 @property (nonatomic) NSMutableArray* reviews;
 
 @end
@@ -56,6 +56,7 @@
     
     
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -150,6 +151,7 @@
     if ([segue.identifier isEqualToString:@"showMap"]) {
         UINavigationController* navController = segue.destinationViewController;
         MapViewController* controller = [navController.viewControllers firstObject];
+//        MapViewController* controller = segue.destinationViewController;
         controller.movie = self.movie;
         controller.delegate = self;
     }

@@ -78,7 +78,7 @@
         <!--Map View Controller-->
         <scene sceneID="5Am-9E-3Dr">
             <objects>
-                <viewController id="p7q-lq-09k" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mapView" id="p7q-lq-09k" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kKc-ZU-Ll0"/>
                         <viewControllerLayoutGuide type="bottom" id="wrP-5j-iNm"/>
@@ -89,27 +89,33 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YXL-gH-6Ca">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="p7q-lq-09k" id="Kf6-cX-i4v"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="YXL-gH-6Ca" firstAttribute="leading" secondItem="21r-rv-3ov" secondAttribute="leading" id="6fQ-Vf-SgM"/>
-                            <constraint firstAttribute="trailing" secondItem="YXL-gH-6Ca" secondAttribute="trailing" id="KpL-BG-rui"/>
-                            <constraint firstItem="wrP-5j-iNm" firstAttribute="top" secondItem="YXL-gH-6Ca" secondAttribute="bottom" id="qS1-ki-k8j"/>
-                            <constraint firstItem="YXL-gH-6Ca" firstAttribute="top" secondItem="21r-rv-3ov" secondAttribute="top" id="xf1-vw-tSR"/>
+                            <constraint firstAttribute="trailing" secondItem="YXL-gH-6Ca" secondAttribute="trailing" id="BWR-4O-JfP"/>
+                            <constraint firstItem="YXL-gH-6Ca" firstAttribute="top" secondItem="21r-rv-3ov" secondAttribute="top" id="aw0-RK-V8d"/>
+                            <constraint firstItem="YXL-gH-6Ca" firstAttribute="leading" secondItem="21r-rv-3ov" secondAttribute="leading" id="cIk-va-JpE"/>
+                            <constraint firstItem="wrP-5j-iNm" firstAttribute="top" secondItem="YXL-gH-6Ca" secondAttribute="bottom" id="jmh-68-Kw6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uhQ-wf-ddZ">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="hve-6L-LxA">
                             <connections>
-                                <action selector="cancelButton:" destination="p7q-lq-09k" id="7dC-VM-bmr"/>
+                                <action selector="cancelButton:" destination="p7q-lq-09k" id="8QG-2w-rx7"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="YXL-gH-6Ca" id="LYy-aW-1fs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4zV-mv-sWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2538" y="-324"/>
+            <point key="canvasLocation" x="3350" y="-324"/>
         </scene>
         <!--Reviews-->
         <scene sceneID="Qp8-54-Cyl">
@@ -241,7 +247,7 @@
                     <navigationItem key="navigationItem" title="Reviews" id="0x8-YU-Drk">
                         <barButtonItem key="rightBarButtonItem" title="Show Theatre Map" id="A1d-tx-Jno">
                             <connections>
-                                <segue destination="Q7J-Cf-QfK" kind="presentation" identifier="showMap" id="ogu-QP-Ggm"/>
+                                <segue destination="Jml-0L-fdx" kind="presentation" identifier="showMap" id="g68-es-alQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -287,22 +293,22 @@
             <point key="canvasLocation" x="252" y="408"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="T6X-ff-jK0">
+        <scene sceneID="lwd-ca-ReB">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q7J-Cf-QfK" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jml-0L-fdx" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i31-jA-bXr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cLU-G7-vkm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="p7q-lq-09k" kind="relationship" relationship="rootViewController" id="BbB-D6-LaX"/>
+                        <segue destination="p7q-lq-09k" kind="relationship" relationship="rootViewController" id="Vmc-1K-um9"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wAp-up-lly" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lf4-78-8A6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1726" y="-324"/>
+            <point key="canvasLocation" x="2538" y="-324"/>
         </scene>
     </scenes>
 </document>

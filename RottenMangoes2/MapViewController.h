@@ -12,7 +12,7 @@
 
 
 @class MapViewController;
-@protocol mapViewControllerDelegate <NSObject>
+@protocol MapViewControllerDelegate <NSObject>
 
 -(void)mapViewControllerDidCancel:(MapViewController*)mapController;
 
@@ -21,7 +21,8 @@
 
 @interface MapViewController : UIViewController
 
-@property (nonatomic, weak) id<mapViewControllerDelegate> delegate;
+@property (nonatomic, weak) id<MapViewControllerDelegate> delegate;
 @property (nonatomic) Movie* movie;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
