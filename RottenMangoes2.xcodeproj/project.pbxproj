@@ -1,0 +1,473 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F22A9691B1676FB00927E6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9681B1676FB00927E6C /* main.m */; };
+		3F22A96C1B1676FB00927E6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A96B1B1676FB00927E6C /* AppDelegate.m */; };
+		3F22A9721B1676FB00927E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F22A9701B1676FB00927E6C /* Main.storyboard */; };
+		3F22A9741B1676FB00927E6C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F22A9731B1676FB00927E6C /* Images.xcassets */; };
+		3F22A9771B1676FB00927E6C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F22A9751B1676FB00927E6C /* LaunchScreen.xib */; };
+		3F22A9831B1676FB00927E6C /* RottenMangoes2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9821B1676FB00927E6C /* RottenMangoes2Tests.m */; };
+		3F22A9911B1677A900927E6C /* MovieCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9901B1677A900927E6C /* MovieCollection.m */; };
+		3F22A9941B16781200927E6C /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9931B16781200927E6C /* Movie.m */; };
+		3F22A9971B167A3100927E6C /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9961B167A3100927E6C /* MovieCell.m */; };
+		3F22A99A1B1692A500927E6C /* MovieReviewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9991B1692A500927E6C /* MovieReviewsController.m */; };
+		3F22A99D1B169D9300927E6C /* Review.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A99C1B169D9300927E6C /* Review.m */; };
+		3F22A9A01B16A6A000927E6C /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A99F1B16A6A000927E6C /* ReviewCell.m */; };
+		3F22A9A31B16B03B00927E6C /* ReviewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9A21B16B03B00927E6C /* ReviewHeader.m */; };
+		3F22A9A61B16B8A600927E6C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9A51B16B8A600927E6C /* WebViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F22A97D1B1676FB00927E6C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F22A95B1B1676FB00927E6C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F22A9621B1676FB00927E6C;
+			remoteInfo = RottenMangoes2;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3F22A9631B1676FB00927E6C /* RottenMangoes2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RottenMangoes2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F22A9671B1676FB00927E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F22A9681B1676FB00927E6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F22A96A1B1676FB00927E6C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3F22A96B1B1676FB00927E6C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F22A9711B1676FB00927E6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F22A9731B1676FB00927E6C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3F22A9761B1676FB00927E6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3F22A97C1B1676FB00927E6C /* RottenMangoes2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RottenMangoes2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F22A9811B1676FB00927E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F22A9821B1676FB00927E6C /* RottenMangoes2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RottenMangoes2Tests.m; sourceTree = "<group>"; };
+		3F22A98F1B1677A900927E6C /* MovieCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCollection.h; sourceTree = "<group>"; };
+		3F22A9901B1677A900927E6C /* MovieCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCollection.m; sourceTree = "<group>"; };
+		3F22A9921B16781200927E6C /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		3F22A9931B16781200927E6C /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		3F22A9951B167A3100927E6C /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		3F22A9961B167A3100927E6C /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		3F22A9981B1692A500927E6C /* MovieReviewsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieReviewsController.h; sourceTree = "<group>"; };
+		3F22A9991B1692A500927E6C /* MovieReviewsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieReviewsController.m; sourceTree = "<group>"; };
+		3F22A99B1B169D9300927E6C /* Review.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Review.h; sourceTree = "<group>"; };
+		3F22A99C1B169D9300927E6C /* Review.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Review.m; sourceTree = "<group>"; };
+		3F22A99E1B16A6A000927E6C /* ReviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewCell.h; sourceTree = "<group>"; };
+		3F22A99F1B16A6A000927E6C /* ReviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewCell.m; sourceTree = "<group>"; };
+		3F22A9A11B16B03B00927E6C /* ReviewHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewHeader.h; sourceTree = "<group>"; };
+		3F22A9A21B16B03B00927E6C /* ReviewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewHeader.m; sourceTree = "<group>"; };
+		3F22A9A41B16B8A600927E6C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		3F22A9A51B16B8A600927E6C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F22A9601B1676FB00927E6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F22A9791B1676FB00927E6C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F22A95A1B1676FB00927E6C = {
+			isa = PBXGroup;
+			children = (
+				3F22A9651B1676FB00927E6C /* RottenMangoes2 */,
+				3F22A97F1B1676FB00927E6C /* RottenMangoes2Tests */,
+				3F22A9641B1676FB00927E6C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F22A9641B1676FB00927E6C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F22A9631B1676FB00927E6C /* RottenMangoes2.app */,
+				3F22A97C1B1676FB00927E6C /* RottenMangoes2Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F22A9651B1676FB00927E6C /* RottenMangoes2 */ = {
+			isa = PBXGroup;
+			children = (
+				3F22A9921B16781200927E6C /* Movie.h */,
+				3F22A9931B16781200927E6C /* Movie.m */,
+				3F22A98F1B1677A900927E6C /* MovieCollection.h */,
+				3F22A9901B1677A900927E6C /* MovieCollection.m */,
+				3F22A9981B1692A500927E6C /* MovieReviewsController.h */,
+				3F22A9991B1692A500927E6C /* MovieReviewsController.m */,
+				3F22A99E1B16A6A000927E6C /* ReviewCell.h */,
+				3F22A99F1B16A6A000927E6C /* ReviewCell.m */,
+				3F22A99B1B169D9300927E6C /* Review.h */,
+				3F22A99C1B169D9300927E6C /* Review.m */,
+				3F22A96A1B1676FB00927E6C /* AppDelegate.h */,
+				3F22A96B1B1676FB00927E6C /* AppDelegate.m */,
+				3F22A9701B1676FB00927E6C /* Main.storyboard */,
+				3F22A9A41B16B8A600927E6C /* WebViewController.h */,
+				3F22A9A51B16B8A600927E6C /* WebViewController.m */,
+				3F22A9A11B16B03B00927E6C /* ReviewHeader.h */,
+				3F22A9A21B16B03B00927E6C /* ReviewHeader.m */,
+				3F22A9951B167A3100927E6C /* MovieCell.h */,
+				3F22A9961B167A3100927E6C /* MovieCell.m */,
+				3F22A9731B1676FB00927E6C /* Images.xcassets */,
+				3F22A9751B1676FB00927E6C /* LaunchScreen.xib */,
+				3F22A9661B1676FB00927E6C /* Supporting Files */,
+			);
+			path = RottenMangoes2;
+			sourceTree = "<group>";
+		};
+		3F22A9661B1676FB00927E6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F22A9671B1676FB00927E6C /* Info.plist */,
+				3F22A9681B1676FB00927E6C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F22A97F1B1676FB00927E6C /* RottenMangoes2Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3F22A9821B1676FB00927E6C /* RottenMangoes2Tests.m */,
+				3F22A9801B1676FB00927E6C /* Supporting Files */,
+			);
+			path = RottenMangoes2Tests;
+			sourceTree = "<group>";
+		};
+		3F22A9801B1676FB00927E6C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F22A9811B1676FB00927E6C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F22A9621B1676FB00927E6C /* RottenMangoes2 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F22A9861B1676FB00927E6C /* Build configuration list for PBXNativeTarget "RottenMangoes2" */;
+			buildPhases = (
+				3F22A95F1B1676FB00927E6C /* Sources */,
+				3F22A9601B1676FB00927E6C /* Frameworks */,
+				3F22A9611B1676FB00927E6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RottenMangoes2;
+			productName = RottenMangoes2;
+			productReference = 3F22A9631B1676FB00927E6C /* RottenMangoes2.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F22A97B1B1676FB00927E6C /* RottenMangoes2Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F22A9891B1676FB00927E6C /* Build configuration list for PBXNativeTarget "RottenMangoes2Tests" */;
+			buildPhases = (
+				3F22A9781B1676FB00927E6C /* Sources */,
+				3F22A9791B1676FB00927E6C /* Frameworks */,
+				3F22A97A1B1676FB00927E6C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F22A97E1B1676FB00927E6C /* PBXTargetDependency */,
+			);
+			name = RottenMangoes2Tests;
+			productName = RottenMangoes2Tests;
+			productReference = 3F22A97C1B1676FB00927E6C /* RottenMangoes2Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F22A95B1B1676FB00927E6C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Jeremy Petter";
+				TargetAttributes = {
+					3F22A9621B1676FB00927E6C = {
+						CreatedOnToolsVersion = 6.3.2;
+					};
+					3F22A97B1B1676FB00927E6C = {
+						CreatedOnToolsVersion = 6.3.2;
+						TestTargetID = 3F22A9621B1676FB00927E6C;
+					};
+				};
+			};
+			buildConfigurationList = 3F22A95E1B1676FB00927E6C /* Build configuration list for PBXProject "RottenMangoes2" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F22A95A1B1676FB00927E6C;
+			productRefGroup = 3F22A9641B1676FB00927E6C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F22A9621B1676FB00927E6C /* RottenMangoes2 */,
+				3F22A97B1B1676FB00927E6C /* RottenMangoes2Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F22A9611B1676FB00927E6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F22A9721B1676FB00927E6C /* Main.storyboard in Resources */,
+				3F22A9771B1676FB00927E6C /* LaunchScreen.xib in Resources */,
+				3F22A9741B1676FB00927E6C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F22A97A1B1676FB00927E6C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F22A95F1B1676FB00927E6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F22A96C1B1676FB00927E6C /* AppDelegate.m in Sources */,
+				3F22A9A61B16B8A600927E6C /* WebViewController.m in Sources */,
+				3F22A9A01B16A6A000927E6C /* ReviewCell.m in Sources */,
+				3F22A9971B167A3100927E6C /* MovieCell.m in Sources */,
+				3F22A9911B1677A900927E6C /* MovieCollection.m in Sources */,
+				3F22A9941B16781200927E6C /* Movie.m in Sources */,
+				3F22A99A1B1692A500927E6C /* MovieReviewsController.m in Sources */,
+				3F22A99D1B169D9300927E6C /* Review.m in Sources */,
+				3F22A9691B1676FB00927E6C /* main.m in Sources */,
+				3F22A9A31B16B03B00927E6C /* ReviewHeader.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F22A9781B1676FB00927E6C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F22A9831B1676FB00927E6C /* RottenMangoes2Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F22A97E1B1676FB00927E6C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F22A9621B1676FB00927E6C /* RottenMangoes2 */;
+			targetProxy = 3F22A97D1B1676FB00927E6C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3F22A9701B1676FB00927E6C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F22A9711B1676FB00927E6C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3F22A9751B1676FB00927E6C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F22A9761B1676FB00927E6C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F22A9841B1676FB00927E6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3F22A9851B1676FB00927E6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F22A9871B1676FB00927E6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RottenMangoes2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F22A9881B1676FB00927E6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = RottenMangoes2/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3F22A98A1B1676FB00927E6C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RottenMangoes2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RottenMangoes2.app/RottenMangoes2";
+			};
+			name = Debug;
+		};
+		3F22A98B1B1676FB00927E6C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = RottenMangoes2Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RottenMangoes2.app/RottenMangoes2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F22A95E1B1676FB00927E6C /* Build configuration list for PBXProject "RottenMangoes2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F22A9841B1676FB00927E6C /* Debug */,
+				3F22A9851B1676FB00927E6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F22A9861B1676FB00927E6C /* Build configuration list for PBXNativeTarget "RottenMangoes2" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F22A9871B1676FB00927E6C /* Debug */,
+				3F22A9881B1676FB00927E6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3F22A9891B1676FB00927E6C /* Build configuration list for PBXNativeTarget "RottenMangoes2Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F22A98A1B1676FB00927E6C /* Debug */,
+				3F22A98B1B1676FB00927E6C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F22A95B1B1676FB00927E6C /* Project object */;
+}
