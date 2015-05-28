@@ -21,6 +21,8 @@
 		3F22A9A01B16A6A000927E6C /* ReviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A99F1B16A6A000927E6C /* ReviewCell.m */; };
 		3F22A9A31B16B03B00927E6C /* ReviewHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9A21B16B03B00927E6C /* ReviewHeader.m */; };
 		3F22A9A61B16B8A600927E6C /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F22A9A51B16B8A600927E6C /* WebViewController.m */; };
+		3F87F80B1B178F9D00C683CE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F87F80A1B178F9D00C683CE /* MapViewController.m */; };
+		3F87F80D1B1793CC00C683CE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87F80C1B1793CC00C683CE /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,9 @@
 		3F22A9A21B16B03B00927E6C /* ReviewHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewHeader.m; sourceTree = "<group>"; };
 		3F22A9A41B16B8A600927E6C /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		3F22A9A51B16B8A600927E6C /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		3F87F8091B178F9D00C683CE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		3F87F80A1B178F9D00C683CE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		3F87F80C1B1793CC00C683CE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F87F80D1B1793CC00C683CE /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +90,7 @@
 		3F22A95A1B1676FB00927E6C = {
 			isa = PBXGroup;
 			children = (
+				3F87F80C1B1793CC00C683CE /* MapKit.framework */,
 				3F22A9651B1676FB00927E6C /* RottenMangoes2 */,
 				3F22A97F1B1676FB00927E6C /* RottenMangoes2Tests */,
 				3F22A9641B1676FB00927E6C /* Products */,
@@ -102,25 +109,11 @@
 		3F22A9651B1676FB00927E6C /* RottenMangoes2 */ = {
 			isa = PBXGroup;
 			children = (
-				3F22A9921B16781200927E6C /* Movie.h */,
-				3F22A9931B16781200927E6C /* Movie.m */,
-				3F22A98F1B1677A900927E6C /* MovieCollection.h */,
-				3F22A9901B1677A900927E6C /* MovieCollection.m */,
-				3F22A9981B1692A500927E6C /* MovieReviewsController.h */,
-				3F22A9991B1692A500927E6C /* MovieReviewsController.m */,
-				3F22A99E1B16A6A000927E6C /* ReviewCell.h */,
-				3F22A99F1B16A6A000927E6C /* ReviewCell.m */,
-				3F22A99B1B169D9300927E6C /* Review.h */,
-				3F22A99C1B169D9300927E6C /* Review.m */,
+				3F87F8081B178E5400C683CE /* Modal Objects */,
+				3F87F8071B178E4200C683CE /* View Controllers */,
 				3F22A96A1B1676FB00927E6C /* AppDelegate.h */,
 				3F22A96B1B1676FB00927E6C /* AppDelegate.m */,
 				3F22A9701B1676FB00927E6C /* Main.storyboard */,
-				3F22A9A41B16B8A600927E6C /* WebViewController.h */,
-				3F22A9A51B16B8A600927E6C /* WebViewController.m */,
-				3F22A9A11B16B03B00927E6C /* ReviewHeader.h */,
-				3F22A9A21B16B03B00927E6C /* ReviewHeader.m */,
-				3F22A9951B167A3100927E6C /* MovieCell.h */,
-				3F22A9961B167A3100927E6C /* MovieCell.m */,
 				3F22A9731B1676FB00927E6C /* Images.xcassets */,
 				3F22A9751B1676FB00927E6C /* LaunchScreen.xib */,
 				3F22A9661B1676FB00927E6C /* Supporting Files */,
@@ -152,6 +145,38 @@
 				3F22A9811B1676FB00927E6C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F87F8071B178E4200C683CE /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F87F8091B178F9D00C683CE /* MapViewController.h */,
+				3F87F80A1B178F9D00C683CE /* MapViewController.m */,
+				3F22A98F1B1677A900927E6C /* MovieCollection.h */,
+				3F22A9901B1677A900927E6C /* MovieCollection.m */,
+				3F22A9981B1692A500927E6C /* MovieReviewsController.h */,
+				3F22A9991B1692A500927E6C /* MovieReviewsController.m */,
+				3F22A99E1B16A6A000927E6C /* ReviewCell.h */,
+				3F22A99F1B16A6A000927E6C /* ReviewCell.m */,
+				3F22A9A41B16B8A600927E6C /* WebViewController.h */,
+				3F22A9A51B16B8A600927E6C /* WebViewController.m */,
+				3F22A9A11B16B03B00927E6C /* ReviewHeader.h */,
+				3F22A9A21B16B03B00927E6C /* ReviewHeader.m */,
+				3F22A9951B167A3100927E6C /* MovieCell.h */,
+				3F22A9961B167A3100927E6C /* MovieCell.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		3F87F8081B178E5400C683CE /* Modal Objects */ = {
+			isa = PBXGroup;
+			children = (
+				3F22A9921B16781200927E6C /* Movie.h */,
+				3F22A9931B16781200927E6C /* Movie.m */,
+				3F22A99B1B169D9300927E6C /* Review.h */,
+				3F22A99C1B169D9300927E6C /* Review.m */,
+			);
+			name = "Modal Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +289,7 @@
 				3F22A99D1B169D9300927E6C /* Review.m in Sources */,
 				3F22A9691B1676FB00927E6C /* main.m in Sources */,
 				3F22A9A31B16B03B00927E6C /* ReviewHeader.m in Sources */,
+				3F87F80B1B178F9D00C683CE /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +484,7 @@
 				3F22A9881B1676FB00927E6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F22A9891B1676FB00927E6C /* Build configuration list for PBXNativeTarget "RottenMangoes2Tests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +493,7 @@
 				3F22A98B1B1676FB00927E6C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -11,9 +11,10 @@
 #import "ReviewCell.h"
 #import "ReviewHeader.h"
 #import "WebViewController.h"
+#import "MapViewController.h"
 
 
-@interface MovieReviewsController ()
+@interface MovieReviewsController ()<mapViewControllerDelegate>
 @property (nonatomic) NSMutableArray* reviews;
 
 @end
@@ -146,6 +147,18 @@
         WebViewController* controller = segue.destinationViewController;
         controller.url = review.link;
     }
+    if ([segue.identifier isEqualToString:@"showMap"]) {
+        UINavigationController* navController = segue.destinationViewController;
+        MapViewController* controller = [navController.viewControllers firstObject];
+        controller.movie = self.movie;
+        controller.delegate = self;
+    }
+}
+
+#pragma mark - MapViewControllerDelegate
+
+-(void)mapViewControllerDidCancel:(MapViewController *)mapController{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
