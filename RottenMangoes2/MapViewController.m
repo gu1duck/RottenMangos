@@ -106,12 +106,12 @@
         NSMutableArray* theatreObjects = [@[] mutableCopy];
         for (NSDictionary* dictionary in theatres){
             Theatre* theatre = [[Theatre alloc] init];
-            theatre.name = dictionary[@"name"];
+            theatre.title = dictionary[@"name"];
             theatre.address = dictionary[@"address"];
             CLLocationCoordinate2D coordinates;
             coordinates.latitude = [dictionary[@"lat"] floatValue];
             coordinates.longitude = [dictionary[@"lng"] floatValue];
-            theatre.coordinates = coordinates;
+            theatre.coordinate = coordinates;
             CLLocation* location = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
             theatre.location = location;
             theatre.distance = [theatre.location distanceFromLocation:self.userLocation];
@@ -140,12 +140,19 @@
 
 -(void)placeTheatres{
     for(Theatre* theatre in self.theatres){
-        MKPointAnnotation* pin = [[MKPointAnnotation alloc] init];
-        pin.coordinate = theatre.coordinates;
-        pin.title = theatre.name;
-        [self.mapView addAnnotation:pin];
-        //NSLog(@"%@, %@", theatre.name, theatre.address);
+        [self.mapView addAnnotation:theatre];
+        
     }
+}
+
+-(MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation{
+    MKAnnotationView* annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"theatreView"];
+    if (annotation == self.mapView.userLocation){
+        return nil; //default to blue dot
+    }
+    annotationView.image = [UIImage imageNamed:@"pin11"];
+    annotationView.canShowCallout = YES;
+    return annotationView;
     
 }
 
@@ -166,14 +173,14 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MKMapItem* currentMapItem = [MKMapItem mapItemForCurrentLocation];
     Theatre* theatre = self.theatres[indexPath.row];
-    MKPlacemark* theatrePlacemark = [[MKPlacemark alloc] initWithCoordinate:theatre.coordinates addressDictionary:nil];
+    MKPlacemark* theatrePlacemark = [[MKPlacemark alloc] initWithCoordinate:theatre.coordinate addressDictionary:nil];
     MKMapItem* theatreMapItem = [[MKMapItem alloc] initWithPlacemark:theatrePlacemark];
     CLLocationCoordinate2D centre;
-    centre.latitude = (self.userLocation.coordinate.latitude + theatre.coordinates.latitude)/2;
-    centre.longitude = (self.userLocation.coordinate.longitude + theatre.coordinates.longitude)/2;
+    centre.latitude = (self.userLocation.coordinate.latitude + theatre.coordinate.latitude)/2;
+    centre.longitude = (self.userLocation.coordinate.longitude + theatre.coordinate.longitude)/2;
     MKCoordinateSpan directionsSpan;
-    directionsSpan.latitudeDelta = fabs(self.userLocation.coordinate.latitude - theatre.coordinates.latitude)+0.01;
-    directionsSpan.longitudeDelta = fabs(self.userLocation.coordinate.longitude - theatre.coordinates.longitude)+0.01;
+    directionsSpan.latitudeDelta = fabs(self.userLocation.coordinate.latitude - theatre.coordinate.latitude)+0.01;
+    directionsSpan.longitudeDelta = fabs(self.userLocation.coordinate.longitude - theatre.coordinate.longitude)+0.01;
     
     [MKMapItem openMapsWithItems:@[currentMapItem, theatreMapItem] launchOptions:@{@"MKLaunchOptionsDirectionsModeKey":@"MKLaunchOptionsDirectionsModeDriving",
                                                                                        // @"MKLaunchOptionsMapCenterKey":[NSValue valueWithMKCoordinate:theatre.coordinates],
