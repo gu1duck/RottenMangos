@@ -27,6 +27,7 @@
 		3F87F8111B179C8300C683CE /* victoria.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3F87F8101B179C8300C683CE /* victoria.gpx */; };
 		3FA80A541B17C8D800E708F1 /* Theatre.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA80A531B17C8D800E708F1 /* Theatre.m */; };
 		3FA80A571B17E4F700E708F1 /* TheatreCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA80A561B17E4F700E708F1 /* TheatreCellTableViewCell.m */; };
+		3FA80A5A1B18F1F000E708F1 /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA80A591B18F1F000E708F1 /* CoreDataStack.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,8 @@
 		3FA80A531B17C8D800E708F1 /* Theatre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theatre.m; sourceTree = "<group>"; };
 		3FA80A551B17E4F700E708F1 /* TheatreCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheatreCellTableViewCell.h; sourceTree = "<group>"; };
 		3FA80A561B17E4F700E708F1 /* TheatreCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheatreCellTableViewCell.m; sourceTree = "<group>"; };
+		3FA80A581B18F1F000E708F1 /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		3FA80A591B18F1F000E708F1 /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 		3F87F8081B178E5400C683CE /* Model Objects */ = {
 			isa = PBXGroup;
 			children = (
+				3FA80A581B18F1F000E708F1 /* CoreDataStack.h */,
+				3FA80A591B18F1F000E708F1 /* CoreDataStack.m */,
 				3FA80A521B17C8D800E708F1 /* Theatre.h */,
 				3FA80A531B17C8D800E708F1 /* Theatre.m */,
 				3F22A9921B16781200927E6C /* Movie.h */,
@@ -306,6 +311,7 @@
 				3F22A9941B16781200927E6C /* Movie.m in Sources */,
 				3F22A99A1B1692A500927E6C /* MovieReviewsController.m in Sources */,
 				3F22A99D1B169D9300927E6C /* Review.m in Sources */,
+				3FA80A5A1B18F1F000E708F1 /* CoreDataStack.m in Sources */,
 				3F22A9691B1676FB00927E6C /* main.m in Sources */,
 				3FA80A541B17C8D800E708F1 /* Theatre.m in Sources */,
 				3F22A9A31B16B03B00927E6C /* ReviewHeader.m in Sources */,
