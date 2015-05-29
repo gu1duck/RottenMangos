@@ -26,6 +26,7 @@
 		3F87F80F1B17953600C683CE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F87F80E1B17953600C683CE /* CoreLocation.framework */; };
 		3F87F8111B179C8300C683CE /* victoria.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 3F87F8101B179C8300C683CE /* victoria.gpx */; };
 		3FA80A541B17C8D800E708F1 /* Theatre.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA80A531B17C8D800E708F1 /* Theatre.m */; };
+		3FA80A571B17E4F700E708F1 /* TheatreCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA80A561B17E4F700E708F1 /* TheatreCellTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,8 @@
 		3F87F8101B179C8300C683CE /* victoria.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = victoria.gpx; path = ../victoria.gpx; sourceTree = "<group>"; };
 		3FA80A521B17C8D800E708F1 /* Theatre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Theatre.h; sourceTree = "<group>"; };
 		3FA80A531B17C8D800E708F1 /* Theatre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Theatre.m; sourceTree = "<group>"; };
+		3FA80A551B17E4F700E708F1 /* TheatreCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TheatreCellTableViewCell.h; sourceTree = "<group>"; };
+		3FA80A561B17E4F700E708F1 /* TheatreCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TheatreCellTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 		3F87F8071B178E4200C683CE /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3FA80A551B17E4F700E708F1 /* TheatreCellTableViewCell.h */,
+				3FA80A561B17E4F700E708F1 /* TheatreCellTableViewCell.m */,
 				3F87F8091B178F9D00C683CE /* MapViewController.h */,
 				3F87F80A1B178F9D00C683CE /* MapViewController.m */,
 				3F22A98F1B1677A900927E6C /* MovieCollection.h */,
@@ -293,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F22A96C1B1676FB00927E6C /* AppDelegate.m in Sources */,
+				3FA80A571B17E4F700E708F1 /* TheatreCellTableViewCell.m in Sources */,
 				3F22A9A61B16B8A600927E6C /* WebViewController.m in Sources */,
 				3F22A9A01B16A6A000927E6C /* ReviewCell.m in Sources */,
 				3F22A9971B167A3100927E6C /* MovieCell.m in Sources */,

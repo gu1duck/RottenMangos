@@ -8,12 +8,15 @@
 
 #import "MapViewController.h"
 #import "Theatre.h"
+#import "TheatreCellTableViewCell.h"
 
-@interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface MapViewController () <CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic) CLLocationManager* locationManager;
 @property (nonatomic) BOOL initialLocation;
 @property (nonatomic) NSMutableArray* theatres;
+@property (nonatomic) CLLocation* userLocation;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -56,6 +59,7 @@
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation* location = [locations firstObject];
+    self.userLocation = location;
 
     if (!self.initialLocation){
         MKCoordinateRegion region;
@@ -108,11 +112,24 @@
             coordinates.latitude = [dictionary[@"lat"] floatValue];
             coordinates.longitude = [dictionary[@"lng"] floatValue];
             theatre.coordinates = coordinates;
+            CLLocation* location = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
+            theatre.location = location;
+            theatre.distance = [theatre.location distanceFromLocation:self.userLocation];
             [theatreObjects addObject:theatre];
         }
+        [theatreObjects sortedArrayUsingComparator:^NSComparisonResult(Theatre*  obj1, Theatre* obj2) {
+            if (obj1.distance > obj2.distance){
+                return NSOrderedDescending;
+            } else if (obj1.distance < obj2.distance){
+                return NSOrderedAscending;
+            }
+            return NSOrderedSame;
+        }];
         dispatch_async(dispatch_get_main_queue(), ^{
             self.theatres = theatreObjects;
             [self placeTheatres];
+            [self.tableView reloadData];
+            
         });
         
     }];
@@ -129,6 +146,40 @@
         [self.mapView addAnnotation:pin];
         //NSLog(@"%@, %@", theatre.name, theatre.address);
     }
+    
 }
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.theatres count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TheatreCellTableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"theatreCell" forIndexPath:indexPath];
+    cell.theatre = self.theatres[indexPath.row];
+    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    MKMapItem* currentMapItem = [MKMapItem mapItemForCurrentLocation];
+    Theatre* theatre = self.theatres[indexPath.row];
+    MKPlacemark* theatrePlacemark = [[MKPlacemark alloc] initWithCoordinate:theatre.coordinates addressDictionary:nil];
+    MKMapItem* theatreMapItem = [[MKMapItem alloc] initWithPlacemark:theatrePlacemark];
+    CLLocationCoordinate2D centre;
+    centre.latitude = (self.userLocation.coordinate.latitude + theatre.coordinates.latitude)/2;
+    centre.longitude = (self.userLocation.coordinate.longitude + theatre.coordinates.longitude)/2;
+    MKCoordinateSpan directionsSpan;
+    directionsSpan.latitudeDelta = fabs(self.userLocation.coordinate.latitude - theatre.coordinates.latitude)+0.01;
+    directionsSpan.longitudeDelta = fabs(self.userLocation.coordinate.longitude - theatre.coordinates.longitude)+0.01;
+    
+    [MKMapItem openMapsWithItems:@[currentMapItem, theatreMapItem] launchOptions:@{@"MKLaunchOptionsDirectionsModeKey":@"MKLaunchOptionsDirectionsModeDriving",
+                                                                                       // @"MKLaunchOptionsMapCenterKey":[NSValue valueWithMKCoordinate:theatre.coordinates],
+                                                                                   //@"MKLaunchOptionsMapSpanKey":[NSValue valueWithMKCoordinateSpan:directionsSpan]
+                                                                                   }];
+}
+
 
 @end
