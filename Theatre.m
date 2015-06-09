@@ -1,20 +1,21 @@
 //
-//  Movie.m
+//  Theatre.m
 //  RottenMangoes2
 //
 //  Created by Jeremy Petter on 2015-06-08.
 //  Copyright (c) 2015 Jeremy Petter. All rights reserved.
 //
 
-#import "Movie.h"
+#import "Theatre.h"
 
 
-@implementation Movie
+@implementation Theatre
 
-@dynamic image;
-@dynamic imageURL;
-@dynamic rottenTomatoesID;
-@dynamic synopsis;
 @dynamic title;
+@dynamic subtitle;
+@dynamic address;
+@dynamic distance;
+@dynamic latitude;
+@dynamic longitude;
 
 @end

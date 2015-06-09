@@ -111,10 +111,10 @@
             CLLocationCoordinate2D coordinates;
             coordinates.latitude = [dictionary[@"lat"] floatValue];
             coordinates.longitude = [dictionary[@"lng"] floatValue];
-            theatre.coordinate = coordinates;
+//            theatre.coordinate = coordinates;
             CLLocation* location = [[CLLocation alloc] initWithLatitude:coordinates.latitude longitude:coordinates.longitude];
-            theatre.location = location;
-            theatre.distance = [theatre.location distanceFromLocation:self.userLocation];
+//            theatre.location = location;
+//            theatre.distance = [theatre.location distanceFromLocation:self.userLocation];
             [theatreObjects addObject:theatre];
         }
         [theatreObjects sortedArrayUsingComparator:^NSComparisonResult(Theatre*  obj1, Theatre* obj2) {
@@ -140,7 +140,7 @@
 
 -(void)placeTheatres{
     for(Theatre* theatre in self.theatres){
-        [self.mapView addAnnotation:theatre];
+//        [self.mapView addAnnotation:theatre];
         
     }
 }
@@ -173,19 +173,19 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     MKMapItem* currentMapItem = [MKMapItem mapItemForCurrentLocation];
     Theatre* theatre = self.theatres[indexPath.row];
-    MKPlacemark* theatrePlacemark = [[MKPlacemark alloc] initWithCoordinate:theatre.coordinate addressDictionary:nil];
-    MKMapItem* theatreMapItem = [[MKMapItem alloc] initWithPlacemark:theatrePlacemark];
+//    MKPlacemark* theatrePlacemark = [[MKPlacemark alloc] initWithCoordinate:theatre.coordinate addressDictionary:nil];
+//    MKMapItem* theatreMapItem = [[MKMapItem alloc] initWithPlacemark:theatrePlacemark];
     CLLocationCoordinate2D centre;
-    centre.latitude = (self.userLocation.coordinate.latitude + theatre.coordinate.latitude)/2;
-    centre.longitude = (self.userLocation.coordinate.longitude + theatre.coordinate.longitude)/2;
+//    centre.latitude = (self.userLocation.coordinate.latitude + theatre.coordinate.latitude)/2;
+//    centre.longitude = (self.userLocation.coordinate.longitude + theatre.coordinate.longitude)/2;
     MKCoordinateSpan directionsSpan;
-    directionsSpan.latitudeDelta = fabs(self.userLocation.coordinate.latitude - theatre.coordinate.latitude)+0.01;
-    directionsSpan.longitudeDelta = fabs(self.userLocation.coordinate.longitude - theatre.coordinate.longitude)+0.01;
+//    directionsSpan.latitudeDelta = fabs(self.userLocation.coordinate.latitude - theatre.coordinate.latitude)+0.01;
+//    directionsSpan.longitudeDelta = fabs(self.userLocation.coordinate.longitude - theatre.coordinate.longitude)+0.01;
     
-    [MKMapItem openMapsWithItems:@[currentMapItem, theatreMapItem] launchOptions:@{@"MKLaunchOptionsDirectionsModeKey":@"MKLaunchOptionsDirectionsModeDriving",
+//    [MKMapItem openMapsWithItems:@[currentMapItem, theatreMapItem] launchOptions:@{@"MKLaunchOptionsDirectionsModeKey":@"MKLaunchOptionsDirectionsModeDriving",
                                                                                        // @"MKLaunchOptionsMapCenterKey":[NSValue valueWithMKCoordinate:theatre.coordinates],
                                                                                    //@"MKLaunchOptionsMapSpanKey":[NSValue valueWithMKCoordinateSpan:directionsSpan]
-                                                                                   }];
+//                                                                                   }];
 }
 
 

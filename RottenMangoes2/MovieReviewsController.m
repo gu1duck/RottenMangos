@@ -41,7 +41,7 @@
             review.critic = dictionary[@"critic"];
             review.publication = dictionary[@"publication"];
             review.freshness = dictionary[@"freshness"];
-            review.link = [NSURL URLWithString:dictionary[@"links"][@"review"]];
+//            review.link = [NSURL URLWithString:dictionary[@"links"][@"review"]];
             review.quote = dictionary[@"quote"];
             
             [self.reviews addObject:review];
@@ -83,7 +83,7 @@
     
     if (indexPath.section == 0){
         ReviewHeader* cell = [tableView dequeueReusableCellWithIdentifier:@"reviewHeader" forIndexPath:indexPath];
-        cell.headerImageView.image =self.movie.image;
+//        cell.headerImageView.image =self.movie.image;
         cell.headerSynopsisLabel.text = self.movie.synopsis;
         cell.headerTitleLabel.text = self.movie.title;
         
@@ -97,7 +97,7 @@
     cell.publicationField.text = review.publication;
     cell.freshnessField.text = review.freshness;
     cell.quoteField.text = review.quote;
-    cell.linkField.text = [review.link absoluteString];
+//    cell.linkField.text = [review.link absoluteString];
     
     return cell;
 }

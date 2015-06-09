@@ -10,10 +10,13 @@
 #import "Movie.h"
 #import "MovieCell.h"
 #import "MovieReviewsController.h"
+#import "CoreDataStack.h"
 
-@interface MovieCollection ()
+@interface MovieCollection () <NSFetchedResultsControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic) NSMutableArray* movies;
+
+@property (nonatomic) NSFetchedResultsController* fetchedResultsController;
+@property (nonatomic) NSManagedObjectContext* managedObjectContext;
 
 @end
 
@@ -24,7 +27,8 @@ static NSString * const reuseIdentifier = @"Cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.movies = [@[] mutableCopy];
+    CoreDataStack* stack = [[CoreDataStack alloc] init];
+    self.managedObjectContext = stack.managedObjectContext;
     
     NSURL* moviesApi = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=sr9tdu3checdyayjz85mff8j&page_limit=50"];
     NSMutableURLRequest* moviesRequest = [NSMutableURLRequest requestWithURL:moviesApi];
@@ -32,27 +36,50 @@ static NSString * const reuseIdentifier = @"Cell";
     
     NSURLSessionTask* getMovies = [[NSURLSession sharedSession] dataTaskWithRequest:moviesRequest
                                                                   completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                                      NSError* parseError = nil;
-                                                                      NSMutableDictionary* parsedData = [NSJSONSerialization JSONObjectWithData:data
-                                                                                    options:0
-                                                                                    error:&parseError];
-                                                                      NSArray* movies = parsedData[@"movies"];
-                                                                      for(NSDictionary* dictionary in movies){
-                                                                          Movie* movie = [[Movie alloc] init];
-                                                                          movie.title = dictionary[@"title"];
-                                                                          movie.synopsis = dictionary[@"synopsis"];
-                                                                          movie.rottenTomatoesID = dictionary[@"id"];
-                                                                          movie.imageURL = [NSURL URLWithString:dictionary[@"posters"][@"thumbnail"]];
-                                                                          
-                                                                          
-                                                                          [self.movies addObject:movie];
-                                                                          
-                                                                          dispatch_async(dispatch_get_main_queue(), ^{
-                                                                              [self.collectionView reloadData];
-                                                                          });
-                                                                          
-                                                                          
+                                                                      
+                                                                      if (error) {
+                                                                          NSLog(@"NSURL get fucked up. %@: %@", error, error.description);
                                                                       }
+                                                                      dispatch_async(dispatch_get_main_queue(), ^{
+                                                                          NSError* parseError;
+                                                                          NSMutableDictionary* parsedData = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                                                            options:0
+                                                                                                                                              error:&parseError];
+                                                                          if (parseError){
+                                                                              NSLog(@"JSON Parsing fucked up, yo. %@:%@", error, error.description);
+                                                                          }
+                                                                          NSArray* movies = parsedData[@"movies"];
+                                                                          
+                                                                          NSEntityDescription* entity = [NSEntityDescription entityForName:NSStringFromClass([Movie class]) inManagedObjectContext:self.managedObjectContext];
+                                                                          
+                                                                          for(NSDictionary* dictionary in movies){
+                                                                              if (![self itemWithId: dictionary[@"id"] isInFetchedResultsController: self.fetchedResultsController]){
+                                                                                  Movie* movie = [[Movie alloc] initWithEntity:entity insertIntoManagedObjectContext:nil];
+                                                                                  movie.title = dictionary[@"title"];
+                                                                                  movie.synopsis = dictionary[@"synopsis"];
+                                                                                  movie.rottenTomatoesID = dictionary[@"id"];
+                                                                                  movie.imageURL = dictionary[@"posters"][@"thumbnail"];
+                                                                                  
+                                                                                  [self.managedObjectContext insertObject:movie];
+                                                                                  
+                                                                              }
+                                                                          }
+                                                                          for(Movie* movie in self.fetchedResultsController.fetchedObjects){
+                                                                              if(![self itemWithId: movie.rottenTomatoesID isInArrayOfDictionaries: movies]){
+                                                                                  
+                                                                                  [self.managedObjectContext deleteObject:movie];
+                                                                                  
+                                                                              }
+                                                                              
+                                                                          }
+                                                                          NSError *saveError;
+                                                                          [self.managedObjectContext save:&saveError];
+                                                                          if (saveError){
+                                                                              NSLog(@"Error saving changes to the object context, doofus. %@: %@", error, error.description);
+                                                                          }
+                                                                          
+                                                                          [self.collectionView reloadData];
+                                                                      });
                                                                   }];
     [getMovies resume];
     
@@ -60,7 +87,7 @@ static NSString * const reuseIdentifier = @"Cell";
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Register cell classes
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
+    //[self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuseIdentifier];
     
     // Do any additional setup after loading the view.
 }
@@ -76,10 +103,10 @@ static NSString * const reuseIdentifier = @"Cell";
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showReviews"]){
-        NSIndexPath* moviePath = [[self.collectionView indexPathsForSelectedItems] firstObject];
-        Movie* movie = [self.movies objectAtIndex:moviePath.row];
-        MovieReviewsController* controller = segue.destinationViewController;
-        controller.movie = movie;
+//        NSIndexPath* moviePath = [[self.collectionView indexPathsForSelectedItems] firstObject];
+//        Movie* movie = [self.movies objectAtIndex:moviePath.row];
+//        MovieReviewsController* controller = segue.destinationViewController;
+//        controller.movie = movie;
     }
 }
 
@@ -87,31 +114,42 @@ static NSString * const reuseIdentifier = @"Cell";
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
+    return [self.fetchedResultsController.sections count];
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return [self.movies count];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MovieCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"movieCell" forIndexPath:indexPath];
     
-    Movie* thisMovie = self.movies[indexPath.row];
+    Movie* thisMovie = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.movieTitleLabel.text = thisMovie.title;
-    NSMutableURLRequest* imageRequest = [NSMutableURLRequest requestWithURL:thisMovie.imageURL];
-
-    NSURLSessionDownloadTask* getImage = [[NSURLSession sharedSession] downloadTaskWithRequest:imageRequest completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        thisMovie.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:location]];
-        
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.movieImageView.image = thisMovie.image;
-        });
-    }];
-    [getImage resume];
     
+    if (thisMovie.image){
+        cell.movieImageView.image = [UIImage imageWithData:thisMovie.image];
+    } else {
+        NSURL* url = [NSURL URLWithString:thisMovie.imageURL];
+        NSMutableURLRequest* imageRequest = [NSMutableURLRequest requestWithURL:url];
+        NSURLSessionDownloadTask* getImage = [[NSURLSession sharedSession] downloadTaskWithRequest:imageRequest completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+            if (error){
+                NSLog(@"Image download fucked up %@, %@", error, error.description);
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                thisMovie.image = [NSData dataWithContentsOfURL:location];
+                cell.movieImageView.image = [UIImage imageWithData:thisMovie.image];
+                NSError* saveError;
+                [self.managedObjectContext save:&saveError];
+                if (saveError){
+                    NSLog(@"Error saving image, brah. %@: %@", error, error.description);
+                }
+            });
+        }];
+        [getImage resume];
+    }
     return cell;
 }
 
@@ -148,5 +186,72 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+#pragma mark - Core Data
+
+-(NSFetchedResultsController*)fetchedResultsController{
+    if (_fetchedResultsController){
+        return _fetchedResultsController;
+    }
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Movie class]) inManagedObjectContext:self.managedObjectContext];
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchBatchSize:50];
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:NO];
+    [fetchRequest setSortDescriptors:@[sortDescriptor]];
+    
+    NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                               managedObjectContext:self.managedObjectContext
+                                                                                                 sectionNameKeyPath:nil
+                                                                                                          cacheName:@"collection"];
+    fetchedResultsController.delegate = self;
+    self.fetchedResultsController = fetchedResultsController;
+    NSError* error;
+    [self.fetchedResultsController performFetch:&error];
+    if (error){
+        NSLog(@"Your fetch fucked up, dog. %@: %@", error, error.description);
+    }
+    
+    return _fetchedResultsController;
+}
+
+#pragma mark - NSFetchResultsControllerDelegate methods
+
+-(void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath{
+//    switch (type) {
+//        case NSFetchedResultsChangeInsert:
+//            [self.collectionView insertItemsAtIndexPaths:@[indexPath]];
+//            break;
+//        case NSFetchedResultsChangeDelete:
+//            [self.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+//            break;
+//        case NSFetchedResultsChangeUpdate:
+//            [self.collectionView reloadItemsAtIndexPaths:@[indexPath]];
+//            break;
+//            
+//        default:
+//            break;
+//    }
+}
+
+#pragma mark - helper methods
+-(BOOL) itemWithId:(NSString*)tomatoesID isInFetchedResultsController: (NSFetchedResultsController*) fetchedResultsController{
+    for (Movie* movie in fetchedResultsController.fetchedObjects){
+        if([movie.rottenTomatoesID isEqualToString:tomatoesID]){
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL) itemWithId: (NSString*)rottenTomatoesId isInArrayOfDictionaries: (NSArray*)array{
+    for (NSDictionary* dictionary in array){
+        NSString* dictionaryId = dictionary[@"id"];
+        if ([dictionaryId isEqualToString:rottenTomatoesId]){
+            return YES;
+        }
+    }
+    return NO;
+}
 
 @end

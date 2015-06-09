@@ -34,7 +34,7 @@
 
 -(void)setup{
     self.titleLabel.text = self.theatre.title;
-    self.detailLabel.text = [NSString stringWithFormat:@"%.02f km",self.theatre.distance/1000];
+    self.detailLabel.text = [NSString stringWithFormat:@"%.02f km",[self.theatre.distance floatValue]/1000];
 }
 
 @end
