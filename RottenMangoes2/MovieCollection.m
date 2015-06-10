@@ -30,7 +30,7 @@ static NSString * const reuseIdentifier = @"Cell";
     CoreDataStack* stack = [[CoreDataStack alloc] init];
     self.managedObjectContext = stack.managedObjectContext;
     
-    NSURL* moviesApi = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=sr9tdu3checdyayjz85mff8j&page_limit=50"];
+    NSURL* moviesApi = [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/lists/movies/in_theaters.json?apikey=sr9tdu3checdyayjz85mff8j&page_limit=48"];
     NSMutableURLRequest* moviesRequest = [NSMutableURLRequest requestWithURL:moviesApi];
     [moviesRequest setHTTPMethod: @"GET"];
     
@@ -100,13 +100,13 @@ static NSString * const reuseIdentifier = @"Cell";
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showReviews"]){
-//        NSIndexPath* moviePath = [[self.collectionView indexPathsForSelectedItems] firstObject];
-//        Movie* movie = [self.movies objectAtIndex:moviePath.row];
-//        MovieReviewsController* controller = segue.destinationViewController;
-//        controller.movie = movie;
+        NSIndexPath* moviePath = [[self.collectionView indexPathsForSelectedItems] firstObject];
+        Movie* movie = [self.fetchedResultsController objectAtIndexPath:moviePath];
+        MovieReviewsController* controller = segue.destinationViewController;
+        controller.movie = movie;
+        controller.managedObjectContext = self.managedObjectContext;
     }
 }
 
@@ -138,8 +138,8 @@ static NSString * const reuseIdentifier = @"Cell";
             if (error){
                 NSLog(@"Image download fucked up %@, %@", error, error.description);
             }
+            thisMovie.image = [NSData dataWithContentsOfURL:location];
             dispatch_async(dispatch_get_main_queue(), ^{
-                thisMovie.image = [NSData dataWithContentsOfURL:location];
                 cell.movieImageView.image = [UIImage imageWithData:thisMovie.image];
                 NSError* saveError;
                 [self.managedObjectContext save:&saveError];
@@ -151,6 +151,20 @@ static NSString * const reuseIdentifier = @"Cell";
         [getImage resume];
     }
     return cell;
+}
+
+#pragma mark - collectionview layout
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGSize size = CGSizeMake(self.view.frame.size.width/3, self.view.frame.size.width/3 * 40/27);
+    return size;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
+    return 0;
+}
+
+-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section{
+    return 0;
 }
 
 #pragma mark <UICollectionViewDelegate>
@@ -196,7 +210,7 @@ static NSString * const reuseIdentifier = @"Cell";
     NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([Movie class]) inManagedObjectContext:self.managedObjectContext];
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:entity];
-    [fetchRequest setFetchBatchSize:50];
+    [fetchRequest setFetchBatchSize:48];
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:NO];
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     

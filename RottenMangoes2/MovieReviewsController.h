@@ -12,5 +12,6 @@
 @interface MovieReviewsController : UITableViewController
 
 @property (nonatomic) Movie* movie;
+@property (nonatomic) NSManagedObjectContext* managedObjectContext;
 
 @end

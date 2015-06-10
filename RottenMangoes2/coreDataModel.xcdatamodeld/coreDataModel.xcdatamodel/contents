@@ -6,13 +6,16 @@
         <attribute name="rottenTomatoesID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="synopsis" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="reviewedBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="rewiews" inverseEntity="Review" syncable="YES"/>
     </entity>
     <entity name="Review" representedClassName="Review" syncable="YES">
         <attribute name="critic" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="freshness" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="publication" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quote" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="rewiews" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="reviewedBy" inverseEntity="Movie" syncable="YES"/>
     </entity>
     <entity name="Theatre" representedClassName="Theatre" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,8 +26,8 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Movie" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="Review" positionX="-36" positionY="9" width="128" height="120"/>
-        <element name="Theatre" positionX="-54" positionY="-9" width="128" height="135"/>
+        <element name="Movie" positionX="-369" positionY="-297" width="128" height="135"/>
+        <element name="Review" positionX="-36" positionY="9" width="128" height="150"/>
+        <element name="Theatre" positionX="-47" positionY="-288" width="128" height="135"/>
     </elements>
 </model>
